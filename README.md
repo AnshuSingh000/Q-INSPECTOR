@@ -37,6 +37,17 @@ Quantum hardware is highly sensitive to noise, and unnecessary gates increase ex
 - `main.py` — full multi-circuit run
 - `demo.py` — focused demo for presentation
 
+##  Limitations
+
+- Rule-based detection
+- Only adjacent gate cancellations
+- Not backend-aware yet
+
+##  Future Work
+
+- Non-adjacent optimization
+- Hardware-aware cost models
+- ML-based redundancy prediction 
 ## Installation
 ```bash
 pip install -r requirements.txt
@@ -49,14 +60,4 @@ pip install -r requirements.txt
 Qiskit gives the optimized circuit.  
 QInspector explains why the optimization is valid.
 
-## 🚧 Limitations
-
-- Rule-based detection
-- Only adjacent gate cancellations
-- Not backend-aware yet
-
-## 🚀 Future Work
-
-- Non-adjacent optimization
-- Hardware-aware cost models
-- ML-based redundancy prediction
+ 
