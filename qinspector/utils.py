@@ -14,3 +14,11 @@ def same_gate_and_qubits(circuit, inst1, inst2):
     qubits2 = get_qubit_indices(circuit, inst2)
 
     return gate1 == gate2 and qubits1 == qubits2
+def gate_histogram(circuit):
+    histogram = {}
+
+    for instruction in circuit.data:
+        gate_name = instruction.operation.name
+        histogram[gate_name] = histogram.get(gate_name, 0) + 1
+
+    return histogram

@@ -1,7 +1,16 @@
-from examples.sample_circuits import circuit_hh, circuit_xx, circuit_cxcx, circuit_mixed
+from examples.sample_circuits import (
+    circuit_hh,
+    circuit_xx,
+    circuit_cxcx,
+    circuit_mixed,
+    circuit_yy,
+    circuit_czcz,
+)
 from qinspector.validator import validate_circuit
 from qinspector.optimizer import optimize_circuit
 from qinspector.scorer import compute_score
+from qinspector.utils import gate_histogram
+from qinspector.analyzer import optimization_verdict
 
 
 def print_circuit(title, qc):
@@ -11,6 +20,7 @@ def print_circuit(title, qc):
     print(qc)
     original_gate_count = len(qc.data)
     print("Original gate count:", original_gate_count)
+    print("Original gate distribution:", gate_histogram(qc))
 
     findings = validate_circuit(qc)
     print("\nValidation findings:")
@@ -26,6 +36,7 @@ def print_circuit(title, qc):
     print(optimized_qc)
     optimized_gate_count = len(optimized_qc.data)
     print("Optimized gate count:", optimized_gate_count)
+    print("Optimized gate distribution:", gate_histogram(optimized_qc))
 
     reduction = original_gate_count - optimized_gate_count
     percentage = (reduction / original_gate_count) * 100 if original_gate_count > 0 else 0
@@ -33,6 +44,7 @@ def print_circuit(title, qc):
     print("\nOptimization metrics:")
     print("Gate reduction:", reduction)
     print(f"Reduction percentage: {percentage:.2f}%")
+    print("Analysis verdict:", optimization_verdict(percentage))
 
     original_score = compute_score(qc)
     optimized_score = compute_score(optimized_qc)
@@ -57,6 +69,8 @@ def main():
     print_circuit("XX Circuit", circuit_xx())
     print_circuit("CXCX Circuit", circuit_cxcx())
     print_circuit("Mixed Circuit", circuit_mixed())
+    print_circuit("YY Circuit", circuit_yy())
+    print_circuit("CZCZ Circuit", circuit_czcz())
 
 
 if __name__ == "__main__":

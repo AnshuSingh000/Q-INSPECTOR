@@ -35,3 +35,18 @@ def circuit_mixed():
     qc.x(1)
     qc.z(0)
     return qc
+
+def circuit_yy():
+    qc = QuantumCircuit(1)
+    qc.y(0)
+    qc.y(0)
+    qc.h(0)
+    return qc
+
+
+def circuit_czcz():
+    qc = QuantumCircuit(2)
+    qc.cz(0, 1)
+    qc.cz(0, 1)
+    qc.x(1)
+    return qc
