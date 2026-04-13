@@ -1,7 +1,9 @@
+## 🎥 Demo Video
+Watch the full demo here:  
+https://drive.google.com/file/d/1Zu7vCGbbkGHdxJ0P0uiU5ejU2jI_iDMa/view?usp=sharing
 # QInspector
 
-Explainable pre-execution validation and optimization of quantum circuits.
-
+Explainable pre-execution validation layer for quantum circuits that detects redundancy, explains transformations, and quantifies optimization impact.
 QInspector is a lightweight prototype built using Python and Qiskit. It analyzes quantum circuits before execution, detects redundant gate patterns, and simplifies circuits using rule-based transformations.
 
 ## Why QInspector?
@@ -38,3 +40,23 @@ Quantum hardware is highly sensitive to noise, and unnecessary gates increase ex
 ## Installation
 ```bash
 pip install -r requirements.txt
+
+##  How is this different from Qiskit?
+
+- Qiskit focuses on compiler-level optimization.
+- QInspector focuses on interpretability and validation.
+
+Qiskit gives the optimized circuit.  
+QInspector explains why the optimization is valid.
+
+## 🚧 Limitations
+
+- Rule-based detection
+- Only adjacent gate cancellations
+- Not backend-aware yet
+
+## 🚀 Future Work
+
+- Non-adjacent optimization
+- Hardware-aware cost models
+- ML-based redundancy prediction
