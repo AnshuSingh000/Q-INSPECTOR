@@ -18,11 +18,18 @@ def print_circuit(title, qc):
     else:
         print("- No issues found")
 
-    optimized_qc = optimize_circuit(qc.copy())
+    optimized_qc, applied_rules = optimize_circuit(qc.copy())
 
     print("\nOptimized circuit:")
     print(optimized_qc)
     print("Optimized gate count:", len(optimized_qc.data))
+
+    print("\nApplied optimization rules:")
+    if applied_rules:
+        for rule in applied_rules:
+            print("-", rule)
+    else:
+        print("- No optimization rules applied")
 
 
 def main():
