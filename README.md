@@ -1,18 +1,33 @@
 # QInspector
 
-Pre-execution validation and optimization of quantum circuits.
+Explainable pre-execution validation and optimization of quantum circuits.
 
-This project is being developed as a prototype for the Quinfosys Quantum Hackathon 2026.
+QInspector is a lightweight prototype built using Python and Qiskit. It analyzes quantum circuits before execution, detects redundant gate patterns, and simplifies circuits using rule-based transformations.
 
-## Current Status
-- Qiskit environment set up
-- Sample circuits created
-- Circuit printing working
+## Why QInspector?
+Quantum hardware is highly sensitive to noise, and unnecessary gates increase execution cost and error probability. QInspector helps reduce redundant operations before execution.
 
-## Tech Stack
-- Python
-- Qiskit
+## Current Features
+- Detects redundant consecutive gates
+- Supports simplification of:
+  - H-H
+  - X-X
+  - Z-Z
+  - CX-CX
+- Shows original vs optimized circuit
+- Reports validation findings
+- Explains applied optimization rules
+- Displays gate count reduction
 
-## Run
+## Project Structure
+- `examples/` — sample circuits for testing
+- `qinspector/validator.py` — validation logic
+- `qinspector/optimizer.py` — optimization logic
+- `qinspector/utils.py` — helper functions
+- `qinspector/rules.py` — supported cancellation rules
+- `main.py` — full multi-circuit run
+- `demo.py` — focused demo for presentation
+
+## Installation
 ```bash
-python3 main.py
+pip install -r requirements.txt
