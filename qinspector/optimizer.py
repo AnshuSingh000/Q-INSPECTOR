@@ -17,7 +17,7 @@ def optimize_circuit(circuit):
                 qubits = get_qubit_indices(circuit, inst1)
 
                 applied_rules.append(
-                    f"Cancelled consecutive '{gate_name}' gates on qubit(s) {qubits}"
+                    f"Removed redundant '{gate_name}' gates on qubit(s) {qubits} because applying the same gate twice cancels its effect"
                 )
 
                 i += 2
