@@ -1,20 +1,28 @@
 from examples.sample_circuits import circuit_hh, circuit_xx, circuit_cxcx, circuit_mixed
 from qinspector.validator import validate_circuit
+from qinspector.optimizer import optimize_circuit
 
 
 def print_circuit(title, qc):
     print(f"\n=== {title} ===")
+
+    print("\nOriginal circuit:")
     print(qc)
-    print("Gate count:", len(qc.data))
+    print("Original gate count:", len(qc.data))
 
     findings = validate_circuit(qc)
-
-    print("Validation findings:")
+    print("\nValidation findings:")
     if findings:
         for f in findings:
             print("-", f)
     else:
         print("- No issues found")
+
+    optimized_qc = optimize_circuit(qc.copy())
+
+    print("\nOptimized circuit:")
+    print(optimized_qc)
+    print("Optimized gate count:", len(optimized_qc.data))
 
 
 def main():
